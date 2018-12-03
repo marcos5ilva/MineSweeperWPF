@@ -1,0 +1,25 @@
+﻿<Window x:Class="MineSweeperWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MineSweeperWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" Width="360"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="400" />
+
+
+        </Grid.RowDefinitions>
+        <Image x:Name="image" HorizontalAlignment="center" Height="670"  VerticalAlignment="center" Width="830" Source="C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\GameLogo.png" Grid.RowSpan="5" Margin="-239,-26,-239,337"/>
+        <Button x:Name="Start" Content="Normal" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Normal_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,37"/>
+        <Button x:Name="Easy" Content="Easy" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Easy_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,95"/>
+        <Button x:Name="Hard" Content="Hard" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Hard_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,390" Grid.RowSpan="3"/>
+    </Grid>
+</Window>

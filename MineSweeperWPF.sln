@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeperWPF", "MineSweeperWPF\MineSweeperWPF.csproj", "{69C42BFC-BAD5-4ECE-96D5-9C55F54E6DD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeperTests", "MineSweeperTests\MineSweeperTests.csproj", "{12840D71-B329-4069-9546-CBC6C7CB8FB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69C42BFC-BAD5-4ECE-96D5-9C55F54E6DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69C42BFC-BAD5-4ECE-96D5-9C55F54E6DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69C42BFC-BAD5-4ECE-96D5-9C55F54E6DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69C42BFC-BAD5-4ECE-96D5-9C55F54E6DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12840D71-B329-4069-9546-CBC6C7CB8FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12840D71-B329-4069-9546-CBC6C7CB8FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12840D71-B329-4069-9546-CBC6C7CB8FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12840D71-B329-4069-9546-CBC6C7CB8FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EEC4282-533F-4FAE-9C0A-8B0566C91E09}
+	EndGlobalSection
+EndGlobal
