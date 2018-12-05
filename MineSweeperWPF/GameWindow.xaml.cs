@@ -310,6 +310,13 @@ namespace MineSweeperWPF
                     NumberOfMines.Content = qtdBombs;
                 }
 
+               else
+                {
+                    cellButtonCoverage.Content = "";
+                    qtdBombs++;
+                    NumberOfMines.Content = qtdBombs;
+                }
+
             }
 
         }
