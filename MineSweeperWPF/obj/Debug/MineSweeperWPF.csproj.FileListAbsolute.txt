@@ -21,3 +21,5 @@ C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\bin\Debug\NAudio.dll
 C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\bin\Debug\NAudio.xml
 C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\obj\Debug\MineSweeperWPF.csproj.CopyComplete
 C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\obj\Debug\MineSweeperWPF.csprojAssemblyReference.cache
+C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\obj\Debug\GameOverWindows.g.cs
+C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\obj\Debug\GameOverWindows.baml

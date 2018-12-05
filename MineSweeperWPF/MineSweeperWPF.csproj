@@ -58,7 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameOverWindows.xaml.cs">
+      <DependentUpon>GameOverWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThreeBV.cs" />
+    <Page Include="GameOverWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +147,8 @@
   <ItemGroup>
     <Content Include="bombSound.mp3" />
     <Resource Include="iconFlag.png" />
+    <Resource Include="gameOverBackground.png" />
+    <Resource Include="gameOverLogo.png" />
     <Content Include="In_Light_Of_Darkness.wav" />
     <Content Include="Modern_Warriors.mp3" />
     <Content Include="Modern_Warriors.wav" />
