@@ -186,8 +186,8 @@ namespace MineSweeperWPF
             }
             else if (level == 2)
             {
-                this.rows = 8;
-                this.columns = 8;
+                this.rows = 10;
+                this.columns = 10;
                 this.qtdBombs = 10;
                 this.playerName = "";
             }
@@ -195,7 +195,7 @@ namespace MineSweeperWPF
             {
                 this.rows = 16;
                 this.columns = 16;
-                this.qtdBombs = 20;
+                this.qtdBombs = 12;
                 this.playerName = "";
             }
             

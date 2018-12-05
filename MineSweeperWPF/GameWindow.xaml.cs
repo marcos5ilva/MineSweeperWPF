@@ -27,6 +27,9 @@ namespace MineSweeperWPF
         int[,] board;
         int qtdBombs = 10;
         int timerIncrement = 0;
+        private int gameLevelValue = 2;
+        //public int GameLevelValue { get; set; }
+
         //SoundPlayer soundPlayer = new SoundPlayer();
         //SoundPlayer sfxOcean = new SoundPlayer();
 
@@ -39,13 +42,9 @@ namespace MineSweeperWPF
             int threeBVValue = 100;
             string playerName = "";
             int WINDOW_WIDTH = 360;
-            
-
-
-
 
             //Setting the level of dificult
-            GameLevel myGameLevel = new GameLevel(1);
+            GameLevel myGameLevel = new GameLevel(gameLevelValue);
             GameBoard gameBoard =  new GameBoard(myGameLevel);
             board = gameBoard.Board;
 
@@ -60,9 +59,6 @@ namespace MineSweeperWPF
 
             //GameOverInfo
             GameOverLogo.Visibility = Visibility.Hidden;
-          
-
-
 
             //Checking the 3BV value for the Easy level
             while (threeBVValue >= 25)
@@ -162,7 +158,7 @@ namespace MineSweeperWPF
                     cellButtonCoverage.Height = 30;
                     cellButtonCoverage.HorizontalAlignment = HorizontalAlignment.Center;
                     cellButtonCoverage.VerticalAlignment = VerticalAlignment.Center;
-                    cellButtonCoverage.Name = "cellButtonCoverage" + row + "" + column;
+                    cellButtonCoverage.Name = "cellButtonCoverage" +"R"+ row + "" +"C"+ column;
                     cellButtonCoverage.Content = "";
                     cellButtonCoverage.Click += new RoutedEventHandler(cellButtonCoverageClick);
                     cellButtonCoverage.MouseRightButtonUp += new MouseButtonEventHandler(cellButtonCoverageRightClickFlag);
@@ -172,7 +168,7 @@ namespace MineSweeperWPF
                     cellButton.Height = 30 ;
                     cellButton.HorizontalAlignment = HorizontalAlignment.Center;
                     cellButton.VerticalAlignment = VerticalAlignment.Center;
-                    cellButton.Name = "cellButton" + row + "" +column;
+                    cellButton.Name = "cellButton" +"R"+ row + "C" +column;
                     RegisterName(cellButton.Name, cellButton);
                     cellButton.Visibility = Visibility.Visible;
 
@@ -210,12 +206,12 @@ namespace MineSweeperWPF
 
             buttonName = cellButtonCoverage.Name;
             buttonNameArray = buttonName.ToCharArray();
-            row = buttonNameArray[18].ToString();
-            col = buttonNameArray[19].ToString();
+            row = buttonNameArray[19].ToString();
+            col = buttonNameArray[21].ToString();
 
             cellButtonCoverage.Visibility = Visibility.Hidden;
 
-            Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + row + col);
+            Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row +"C"+ col);
             
 
             if (cellButton.Content.ToString() == "")
@@ -344,8 +340,8 @@ namespace MineSweeperWPF
             //Check the right cell
             if (col + 1 <= board.GetUpperBound(1))
             {
-                Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + row + "" + (col + 1));
-                Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + row + "" + (col + 1));
+                Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "C" + (col + 1));
+                Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "C" + (col + 1));
 
                 Console.Write(cellButton.Content);
                 if ((cellButton.Content.ToString() == "" ) &&  cellButtonCoverage.Visibility == Visibility.Visible)
@@ -367,8 +363,8 @@ namespace MineSweeperWPF
                 //Check the left cell
                 if (col - 1 >0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + row + "" + (col - 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + row + "" + (col - 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "C" + (col - 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "C" + (col - 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                             cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -386,8 +382,8 @@ namespace MineSweeperWPF
                 //Check the cell up
                 if (row - 1 >= 0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + (row - 1) + "" + (col));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + (row - 1) + "" + (col));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "C" + (col));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "C" + (col));
                     if((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                             cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -405,8 +401,8 @@ namespace MineSweeperWPF
                 //Check the cell down
                 if (row + 1 <= board.GetUpperBound(0))
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + (row + 1) + "" + (col));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + (row + 1) + "" + (col));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "C" + (col));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "C" + (col));
                
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
@@ -425,8 +421,8 @@ namespace MineSweeperWPF
                 //Check the adjacent cell up
                 if (row -1 >= 0 && col + 1 <= board.GetUpperBound(1))
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + (row - 1) + "" + (col + 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + (row - 1) + "" + (col + 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "C" + (col + 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "C" + (col + 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -444,8 +440,8 @@ namespace MineSweeperWPF
                 //Check the adjacent cell down
                 if (row + 1 <= board.GetUpperBound(0) && col - 1 >= 0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + (row + 1) + "" + (col - 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" + (row + 1) + "" + (col - 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "C" + (col - 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "C" + (col - 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;

@@ -41,10 +41,6 @@ namespace MineSweeperWPF
             soundPlayer.Stream = File.OpenRead(@"C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\Modern_Warriors.wav");
             soundPlayer.PlayLooping();
 
-
-
-
-
         }
 
         /*private void Start_Click(object sender, RoutedEventArgs e)
@@ -59,22 +55,31 @@ namespace MineSweeperWPF
             //waveOutDevice.Stop();
             //audioFileReader.Dispose();
             //waveOutDevice.Dispose();
-
+           
             GameWindow gameWindow = new GameWindow();
+            //gameWindow.GameLevelValue = 1;
             this.Close();
             gameWindow.ShowDialog();
             
-
-
         }
 
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
-           
+            soundPlayer.Stop();
+            GameWindow gameWindow = new GameWindow();
+            //gameWindow.GameLevelValue = 2;
+            this.Close();
+            gameWindow.ShowDialog();
+
         }
 
         private void Hard_Click(object sender, RoutedEventArgs e)
         {
+            soundPlayer.Stop();
+            GameWindow gameWindow = new GameWindow();
+            //gameWindow.GameLevelValue = 3;
+            this.Close();
+            gameWindow.ShowDialog();
 
         }
     }
