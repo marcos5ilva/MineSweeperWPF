@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_MineSweeperWPF.210942727.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="MineSweeperTests" t="IncludeRecursive">
+        <e p="MineSweeperTests.csproj" t="IncludeRecursive" />
+        <e p="MinesweeperGameTets.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+      </e>
+      <e p="MineSweeperWPF" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="Bombs.cs" t="Include" />
+        <e p="Game.cs" t="Include" />
+        <e p="GameBoard.cs" t="Include" />
+        <e p="GameLogo.png" t="Include" />
+        <e p="GameOverWindows.xaml" t="Include" />
+        <e p="GameOverWindows.xaml.cs" t="Include" />
+        <e p="GameWindow.xaml" t="Include" />
+        <e p="GameWindow.xaml.cs" t="Include" />
+        <e p="In_Light_Of_Darkness.wav" t="Include" />
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="MineSweeperWPF.csproj" t="IncludeRecursive" />
+        <e p="Modern_Warriors.mp3" t="Include" />
+        <e p="Modern_Warriors.wav" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="ResourceDictionary" t="Include">
+          <e p="ButtonDictionary.xaml" t="Include" />
+        </e>
+        <e p="ThreeBV.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bombSound.mp3" t="Include" />
+        <e p="gameOverBackground.png" t="Include" />
+        <e p="gameOverLogo.png" t="Include" />
+        <e p="iconFlag.png" t="Include" />
+        <e p="iconMine.png" t="Include" />
+        <e p="iconTimer.png" t="Include" />
+        <e p="mineCounterPannel.png" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="oceanSound.mp3" t="Include" />
+        <e p="packages.config" t="Include" />
+        <e p="radarBackground.png" t="Include" />
+        <e p="radarSound.mp3" t="Include" />
+        <e p="radarSoundNegative.mp3" t="Include" />
+        <e p="stopCounterPannel.png" t="Include" />
+        <e p="timeCounterPannel.png" t="Include" />
+      </e>
+      <e p="MineSweeperWPF.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.abstractions.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.reporters.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.utility.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.visualstudio.testadapter.dll" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>
