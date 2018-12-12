@@ -166,12 +166,14 @@ namespace MineSweeperWPF
         public int columns;
         public int qtdBombs;
         public string playerName;
+        //public int threeBV;
 
         public GameLevel(int rows, int columns, int qtdBombs, string playerName)
         {
             this.rows = rows;
             this.columns = columns;
             this.qtdBombs = qtdBombs;
+            //this.threeBV = threeBV;
             this.playerName = playerName;
         }
 
@@ -183,22 +185,33 @@ namespace MineSweeperWPF
                 this.columns = 8;
                 this.qtdBombs = 6;
                 this.playerName = "";
+                //this.threeBV = 24;
             }
             else if (level == 2)
             {
                 this.rows = 10;
                 this.columns = 10;
+                this.qtdBombs = 8;
+                this.playerName = "";
+                //this.threeBV = 30;
+            }
+            else if (level == 3)
+            {
+                this.rows = 12;
+                this.columns = 12;
                 this.qtdBombs = 10;
                 this.playerName = "";
+                //this.threeBV = 40;
             }
             else
             {
-                this.rows = 16;
-                this.columns = 16;
-                this.qtdBombs = 12;
+                this.rows = 8;
+                this.columns = 8;
+                this.qtdBombs = 6;
                 this.playerName = "";
+                //this.threeBV = 24;
             }
-            
+
         }
 
     }

@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Timers;
 using System.Windows.Threading;
 
+
 namespace MineSweeperWPF
 {
     /// <summary>
@@ -27,31 +28,52 @@ namespace MineSweeperWPF
         int[,] board;
         int qtdBombs = 10;
         int timerIncrement = 0;
-        private int gameLevelValue = 2;
+        int gameLevelValue;
+        GameLevel myGameLevel;
+
         //public int GameLevelValue { get; set; }
 
         //SoundPlayer soundPlayer = new SoundPlayer();
         //SoundPlayer sfxOcean = new SoundPlayer();
 
-        public GameWindow()
+        public GameWindow(int gameLevelValue, int costumNumColumn, int costumNumRow, int costumNumMines)
         {
             InitializeComponent();
             Grid.SetRow(cellGrid, 3);
-            int numColumn = 8;
-            int numRow = 8;
+            int numColumn = costumNumColumn;
+            int numRow = costumNumRow;
+            int numMines = costumNumMines;
             int threeBVValue = 100;
+            int threeBVLevel = 25;
             string playerName = "";
-            int WINDOW_WIDTH = 360;
+            int CELLGRID_WIDTH = 300;
+            int CELLGRID_HEIGHT = 300;
+            this.gameLevelValue = gameLevelValue;
+
 
             //Setting the level of dificult
-            GameLevel myGameLevel = new GameLevel(gameLevelValue);
-            GameBoard gameBoard =  new GameBoard(myGameLevel);
+            if (gameLevelValue <= 3)
+            {
+                myGameLevel = new GameLevel(gameLevelValue);
+            }
+            if(gameLevelValue == 4)
+            {
+                myGameLevel = new GameLevel(numRow, numColumn, numMines, "");
+            }
+            
+            GameBoard gameBoard = new GameBoard(myGameLevel);
             board = gameBoard.Board;
 
-            //Adding the values of row, columns, and qtdBombs for the selected leval
-            numColumn = myGameLevel.columns;
-            numRow = myGameLevel.rows;
-            qtdBombs = myGameLevel.qtdBombs;
+
+
+            //Adding the values of row, columns, and qtdBombs for the selected level
+            
+                numColumn = myGameLevel.columns;
+                numRow = myGameLevel.rows;
+                qtdBombs = myGameLevel.qtdBombs;
+                threeBVLevel = 25;
+            
+            
 
             //Setting UI info
             NumberOfMines.Content = qtdBombs;
@@ -59,15 +81,40 @@ namespace MineSweeperWPF
 
             //GameOverInfo
             GameOverLogo.Visibility = Visibility.Hidden;
+            GameTimer.Visibility = Visibility.Visible;
+            NumberOfMines.Visibility = Visibility.Visible;
+            GameTimerImg.Visibility = Visibility.Visible;
+            NumberOfMinesImg.Visibility = Visibility.Visible;
+            TimerLabel.Visibility = Visibility.Hidden;
+            TimeScore.Visibility = Visibility.Hidden;
+            if (gameLevelValue == 1)
+            {
+                threeBVLevel = 25;
+            }
+            else if( gameLevelValue == 2)
+            {
+                threeBVLevel = 32;
+            }
+            else if (gameLevelValue == 3)
+            {
+                threeBVLevel = 45;
+            }
+            else
+            {
+                threeBVLevel = 45;
+            }
 
             //Checking the 3BV value for the Easy level
-            while (threeBVValue >= 25)
+            while (threeBVValue >=threeBVLevel )
             {
-                gameBoard = new GameBoard(myGameLevel);
-                gameBoard.AdjacentBombCounter();
+               
+                    gameBoard = new GameBoard(myGameLevel);
+                    gameBoard.AdjacentBombCounter();
 
-                ThreeBV threeBV = new ThreeBV(gameBoard.Board);
-                threeBVValue = threeBV.Value();
+                    ThreeBV threeBV = new ThreeBV(gameBoard.Board);
+                    threeBVValue = threeBV.Value();
+               
+                
             }
 
             
@@ -77,7 +124,7 @@ namespace MineSweeperWPF
             {
                 // Define the Rows
                 RowDefinition rowDef = new RowDefinition();
-                rowDef.MinHeight = 32;
+                rowDef.MinHeight = (int)(CELLGRID_WIDTH / numRow);
                 cellGrid.RowDefinitions.Add(rowDef);
             }
 
@@ -85,7 +132,7 @@ namespace MineSweeperWPF
             {
                 // Define the Columns
                 ColumnDefinition colDef = new ColumnDefinition();
-                colDef.MinWidth = 32 ;
+                colDef.MinWidth = (int)(CELLGRID_WIDTH / numColumn);
                 cellGrid.ColumnDefinitions.Add(colDef);
             }
 
@@ -154,21 +201,26 @@ namespace MineSweeperWPF
                         cellButton.BorderBrush = new SolidColorBrush(Color.FromArgb(180, 16, 244, 16));
                     }
 
-                    cellButtonCoverage.Width = 30;
-                    cellButtonCoverage.Height = 30;
+                    cellButtonCoverage.Width = (int) (CELLGRID_WIDTH / numColumn);
+                    cellButtonCoverage.Height = (int) (CELLGRID_WIDTH / numRow);
+                    cellButtonCoverage.Margin = new Thickness(0) ;
+
                     cellButtonCoverage.HorizontalAlignment = HorizontalAlignment.Center;
                     cellButtonCoverage.VerticalAlignment = VerticalAlignment.Center;
-                    cellButtonCoverage.Name = "cellButtonCoverage" +"R"+ row + "" +"C"+ column;
+                    cellButtonCoverage.Name = "cellButtonCoverage" +"R"+ row + "CL"+ column;
                     cellButtonCoverage.Content = "";
                     cellButtonCoverage.Click += new RoutedEventHandler(cellButtonCoverageClick);
                     cellButtonCoverage.MouseRightButtonUp += new MouseButtonEventHandler(cellButtonCoverageRightClickFlag);
                     RegisterName(cellButtonCoverage.Name, cellButtonCoverage);
 
-                    cellButton.Width = 30;
-                    cellButton.Height = 30 ;
+                    cellButton.Width = (int)(CELLGRID_WIDTH / numColumn);
+                    cellButton.Height = (int)(CELLGRID_WIDTH / numRow);
+                    cellButton.Margin = new Thickness(0);
+
+
                     cellButton.HorizontalAlignment = HorizontalAlignment.Center;
                     cellButton.VerticalAlignment = VerticalAlignment.Center;
-                    cellButton.Name = "cellButton" +"R"+ row + "C" +column;
+                    cellButton.Name = "cellButton" +"R"+ row + "CL" +column;
                     RegisterName(cellButton.Name, cellButton);
                     cellButton.Visibility = Visibility.Visible;
 
@@ -177,14 +229,19 @@ namespace MineSweeperWPF
                     
 
                     Grid.SetRow(cellButtonCoverage, row);
+                    Grid.SetRowSpan(cellButtonCoverage, 1);
                     Grid.SetColumn(cellButtonCoverage, column);
+                    Grid.SetColumnSpan(cellButtonCoverage, 1);
                     Grid.SetZIndex(cellButtonCoverage, 10);
 
                     Grid.SetRow(cellButton, row);
+                    Grid.SetRowSpan(cellButton, 1);
                     Grid.SetColumn(cellButton, column);
+                    Grid.SetColumnSpan(cellButton, 1);
                     Grid.SetZIndex(cellButton, 5);
 
-                    
+
+                    //cellGrid.ShowGridLines = true;
                     cellGrid.Children.Add(cellButtonCoverage);
                     cellGrid.Children.Add(cellButton); 
                 }
@@ -199,19 +256,25 @@ namespace MineSweeperWPF
             char[] buttonNameArray;
             string buttonName;
             string row;
+            String row1;
             string col;
             var isSoundPlayed = false;
 
             Button cellButtonCoverage = ((System.Windows.Controls.Button)sender);
 
             buttonName = cellButtonCoverage.Name;
+            int quant = buttonName.Substring(buttonName.IndexOf("R") + 1).Length - buttonName.Substring(buttonName.IndexOf("CL")).Length;
+            String rowIndex = buttonName.Substring(buttonName.IndexOf("R") + 1, quant);
+            String columnIndex = buttonName.Substring(buttonName.IndexOf("CL") + 2);
             buttonNameArray = buttonName.ToCharArray();
-            row = buttonNameArray[19].ToString();
-            col = buttonNameArray[21].ToString();
+           // row1 = buttonNameArray[rowIndex].ToString();
+            //int rowIndex2 = row1.IndexOf("C");
+            row = rowIndex;
+            col = columnIndex;
 
             cellButtonCoverage.Visibility = Visibility.Hidden;
 
-            Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row +"C"+ col);
+            Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row +"CL"+ col);
             
 
             if (cellButton.Content.ToString() == "")
@@ -288,7 +351,7 @@ namespace MineSweeperWPF
                     isSoundPlayed = false;
                 }
 
-                GameOverScreen();
+                GameOverScreen(board);
             }
 
         }
@@ -340,8 +403,8 @@ namespace MineSweeperWPF
             //Check the right cell
             if (col + 1 <= board.GetUpperBound(1))
             {
-                Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "C" + (col + 1));
-                Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "C" + (col + 1));
+                Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "CL" + (col + 1));
+                Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "CL" + (col + 1));
 
                 Console.Write(cellButton.Content);
                 if ((cellButton.Content.ToString() == "" ) &&  cellButtonCoverage.Visibility == Visibility.Visible)
@@ -363,8 +426,8 @@ namespace MineSweeperWPF
                 //Check the left cell
                 if (col - 1 >0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "C" + (col - 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "C" + (col - 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ row + "CL" + (col - 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "CL" + (col - 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                             cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -382,8 +445,8 @@ namespace MineSweeperWPF
                 //Check the cell up
                 if (row - 1 >= 0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "C" + (col));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "C" + (col));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "CL" + (col));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "CL" + (col));
                     if((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                             cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -401,8 +464,8 @@ namespace MineSweeperWPF
                 //Check the cell down
                 if (row + 1 <= board.GetUpperBound(0))
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "C" + (col));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "C" + (col));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "CL" + (col));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "CL" + (col));
                
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
@@ -421,8 +484,8 @@ namespace MineSweeperWPF
                 //Check the adjacent cell up
                 if (row -1 >= 0 && col + 1 <= board.GetUpperBound(1))
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "C" + (col + 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "C" + (col + 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row - 1) + "CL" + (col + 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "CL" + (col + 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -440,8 +503,8 @@ namespace MineSweeperWPF
                 //Check the adjacent cell down
                 if (row + 1 <= board.GetUpperBound(0) && col - 1 >= 0)
                 {
-                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "C" + (col - 1));
-                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "C" + (col - 1));
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "CL" + (col - 1));
+                    Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "CL" + (col - 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;
@@ -460,6 +523,18 @@ namespace MineSweeperWPF
 
         }
 
+        void RevealAll(int numRow, int numColumn)
+        {
+            for (var row = 0; row <= numRow; row++)
+            {
+                for (var column = 0; column <= numColumn; column++)
+                {
+                    Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" + "R" + row + "CL" + column);
+                    cellButtonCoverage.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -470,15 +545,19 @@ namespace MineSweeperWPF
             
         }
 
-        void GameOverScreen()
+        void GameOverScreen(int[,] board)
         {
-            cellGrid.IsEnabled = false;
-            
+            //cellGrid.IsEnabled = false;
+            TimeScore.Content = GameTimer.Content;
             GameOverLogo.Visibility = Visibility.Visible;
             GameTimer.Visibility = Visibility.Hidden;
             NumberOfMines.Visibility = Visibility.Hidden;
+            GameTimerImg.Visibility = Visibility.Hidden;
+            NumberOfMinesImg.Visibility = Visibility.Hidden;
+            TimerLabel.Visibility = Visibility.Visible;
+            TimeScore.Visibility = Visibility.Visible;
+            RevealAll(board.GetUpperBound(0), board.GetUpperBound(1));
             StopButton.Content = "Back";
-
         }
     }
 }

@@ -13,6 +13,7 @@ namespace MineSweeperWPF
         int cols = 8;
         int qtdBombs = 10;
         string playerName = " ";
+        int threeBV = 24;
          GameBoard Board;
 
         public Game(int row, int cols, int qtdBombs)
@@ -47,8 +48,8 @@ namespace MineSweeperWPF
 
 
             //creating  a array to store the game board
-            GameLevel myGameLevel = new GameLevel(this.rows, this.cols, this.qtdBombs, this.playerName);
-            Board = new GameBoard(myGameLevel);
+            /*GameLevel myGameLevel = new GameLevel(this.rows, this.cols, this.qtdBombs, this.playerName);
+            Board = new GameBoard(myGameLevel);*/
         
 
             //storing the random gameboard result

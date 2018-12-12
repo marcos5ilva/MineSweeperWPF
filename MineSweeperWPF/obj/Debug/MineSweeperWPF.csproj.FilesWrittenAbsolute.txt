@@ -1,0 +1,8 @@
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/obj/Debug/.NETFramework,Version=v4.6.1.AssemblyAttribute.cs
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/obj/Debug/MineSweeperWPF.Properties.Resources.resources
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/bin/Debug/MineSweeperWPF.exe.config
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/bin/Debug/MineSweeperWPF.pdb
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/bin/Debug/MineSweeperWPF.exe
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/obj/Debug/MineSweeperWPF.exe
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/obj/Debug/MineSweeperWPF.pdb
+/media/marcos/OS/Users/Marcos/source/repos/MineSweeperWPF/MineSweeperWPF/bin/Debug/NAudio.dll

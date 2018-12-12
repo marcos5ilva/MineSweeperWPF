@@ -55,9 +55,8 @@ namespace MineSweeperWPF
             //waveOutDevice.Stop();
             //audioFileReader.Dispose();
             //waveOutDevice.Dispose();
-           
-            GameWindow gameWindow = new GameWindow();
-            //gameWindow.GameLevelValue = 1;
+            int gameLevelValue = 1;
+            GameWindow gameWindow = new GameWindow(gameLevelValue, 0, 0, 0);
             this.Close();
             gameWindow.ShowDialog();
             
@@ -66,8 +65,9 @@ namespace MineSweeperWPF
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
             soundPlayer.Stop();
-            GameWindow gameWindow = new GameWindow();
-            //gameWindow.GameLevelValue = 2;
+            int gameLevelValue = 2;
+            GameWindow gameWindow = new GameWindow(gameLevelValue, 0, 0, 0);
+            
             this.Close();
             gameWindow.ShowDialog();
 
@@ -76,11 +76,21 @@ namespace MineSweeperWPF
         private void Hard_Click(object sender, RoutedEventArgs e)
         {
             soundPlayer.Stop();
-            GameWindow gameWindow = new GameWindow();
-            //gameWindow.GameLevelValue = 3;
+            int gameLevelValue = 3;
+            GameWindow gameWindow = new GameWindow(gameLevelValue, 0, 0, 0);
             this.Close();
             gameWindow.ShowDialog();
 
+        }
+
+        private void Custom_Click(object sender, RoutedEventArgs e)
+        {
+            soundPlayer.Stop();
+            CustomWindow customWindow = new CustomWindow();
+            this.Close();
+            customWindow.ShowDialog();
+           
+          
         }
     }
 }

@@ -58,11 +58,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GameOverWindows.xaml.cs">
-      <DependentUpon>GameOverWindows.xaml</DependentUpon>
+    <Compile Include="CustomWindow.xaml.cs">
+      <DependentUpon>CustomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThreeBV.cs" />
-    <Page Include="GameOverWindows.xaml">
+    <Page Include="CustomWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -151,7 +151,7 @@ namespace MineSweeperTests
             //Arrange
             int gameLevelValue = 2;
             GameLevel myGameLevel = new GameLevel(gameLevelValue);
-            int expected = 10;
+            int expected = 8;
             int response = 0;
             //Act
             response = myGameLevel.qtdBombs;
@@ -165,7 +165,7 @@ namespace MineSweeperTests
             //Arrange
             int gameLevelValue = 2;
             GameLevel myGameLevel = new GameLevel(gameLevelValue);
-            int expected = 8;
+            int expected = 10;
             int response = 0;
             //Act
             response = myGameLevel.rows;
@@ -179,7 +179,7 @@ namespace MineSweeperTests
             //Arrange
             int gameLevelValue = 2;
             GameLevel myGameLevel = new GameLevel(gameLevelValue);
-            int expected = 8;
+            int expected = 10;
             int response = 0;
             //Act
             response = myGameLevel.columns;

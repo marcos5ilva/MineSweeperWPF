@@ -1,0 +1,21 @@
+﻿<Window x:Class="MineSweeperWPF.CustomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MineSweeperWPF"
+        mc:Ignorable="d"
+        Title="CustomWindow" Height="300" Width="360"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF0098CA">
+        <Label x:Name="NumberOfRowsLabel" x:FieldModifier="public"  Content="Rows" HorizontalAlignment="Left" Margin="96,74,0,0" VerticalAlignment="Top" Foreground="#FFF6ECEC" FontFamily="Stencil" FontSize="20" />
+        <TextBox x:Name="NumberOfRowsTextBox" HorizontalAlignment="Left" Height="17" Margin="200,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"/>
+        <Label x:Name="NumberOfColumnsLabel" x:FieldModifier="public" Content="COLUMNS" HorizontalAlignment="Left" Margin="96,101,0,0" VerticalAlignment="Top" Foreground="#FFF6ECEC" FontFamily="Stencil" FontSize="20"/>
+        <TextBox x:Name="NumberOfColumnsTextBox" HorizontalAlignment="Left" Height="17" Margin="200,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"/>
+        <Label x:Name="NumberOfMinesLabel" Content="MINES" HorizontalAlignment="Left" Margin="96,127,0,0" VerticalAlignment="Top" Foreground="#FFF6ECEC" FontFamily="Stencil" FontSize="20"/>
+        <TextBox x:Name="NumberOfMinesTextBox" x:FieldModifier="public" HorizontalAlignment="Left" Height="17" Margin="200,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"/>
+        <Label x:Name="CustomTitleLable" Content="CUSTOM" HorizontalAlignment="Center" Margin="106,15,50,0" VerticalAlignment="Top" FontFamily="Stencil" FontSize="36" Foreground="#FF000131" BorderBrush="White" Panel.ZIndex="2" Width="196"/>
+        <Button x:Name="Play" Content="Play" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="CustomPlay_Click" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="82,0,74,28"/>
+
+    </Grid>
+</Window>
