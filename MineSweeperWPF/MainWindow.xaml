@@ -17,7 +17,7 @@
 
         </Grid.RowDefinitions>
         <Image x:Name="image" HorizontalAlignment="center" Height="670"  VerticalAlignment="center" Width="830" Source="C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\GameLogo.png" Grid.RowSpan="5" Margin="-239,-26,-239,337"/>
-        <Button x:Name="Start" Content="Normal" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Normal_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,109"/>
+        <Button x:Name="Normal" Content="Normal" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Normal_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,109"/>
         <Button x:Name="Easy" Content="Easy" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Easy_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,167"/>
         <Button x:Name="Hard" Content="Hard" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Hard_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,51"/>
         <Button x:Name="Custom" Content="custom" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Custom_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,400" Grid.RowSpan="3"/>

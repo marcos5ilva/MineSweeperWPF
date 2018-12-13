@@ -30,6 +30,7 @@ namespace MineSweeperWPF
         int timerIncrement = 0;
         int gameLevelValue;
         GameLevel myGameLevel;
+        int victoryCountDown;
 
         //public int GameLevelValue { get; set; }
 
@@ -72,7 +73,9 @@ namespace MineSweeperWPF
                 numRow = myGameLevel.rows;
                 qtdBombs = myGameLevel.qtdBombs;
                 threeBVLevel = 25;
-            
+
+            //Setting Victory countdown
+            victoryCountDown = (numRow * numColumn) - qtdBombs;
             
 
             //Setting UI info
@@ -273,6 +276,8 @@ namespace MineSweeperWPF
             col = columnIndex;
 
             cellButtonCoverage.Visibility = Visibility.Hidden;
+            victoryCountDown--;
+            GameWinScreen(victoryCountDown);
 
             Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row +"CL"+ col);
             
@@ -299,8 +304,8 @@ namespace MineSweeperWPF
                     sfxRadarNegative.Dispose();
                     isSoundPlayed = false;
                 }
-               
 
+               
                 RevealAdjacentCell(Convert.ToInt32(row), Convert.ToInt32(col));
             }
 
@@ -327,6 +332,8 @@ namespace MineSweeperWPF
                     sfxRadar.Dispose();
                     isSoundPlayed = false;
                 }
+
+                
             }
 
             else
@@ -409,8 +416,10 @@ namespace MineSweeperWPF
                 Console.Write(cellButton.Content);
                 if ((cellButton.Content.ToString() == "" ) &&  cellButtonCoverage.Visibility == Visibility.Visible)
                 {
-                            cellButtonCoverage.Visibility = Visibility.Hidden;
-                                RevealAdjacentCell(row, col + 1);
+                    cellButtonCoverage.Visibility = Visibility.Hidden;
+                    victoryCountDown--;
+                    GameWinScreen(victoryCountDown);
+                    RevealAdjacentCell(row, col + 1);
                 }
 
                 if (( cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
@@ -418,7 +427,9 @@ namespace MineSweeperWPF
                 || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                 {
                     cellButtonCoverage.Visibility = Visibility.Hidden;
-             
+                    victoryCountDown--;
+                    GameWinScreen(victoryCountDown);
+
                 }
 
             }
@@ -430,16 +441,18 @@ namespace MineSweeperWPF
                     Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ row + "CL" + (col - 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
-                            cellButtonCoverage.Visibility = Visibility.Hidden;
-                            RevealAdjacentCell(row, col - 1);
+                        cellButtonCoverage.Visibility = Visibility.Hidden;
+                        victoryCountDown--;
+                        RevealAdjacentCell(row, col - 1);
                     }
                 if ((cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
                     || cellButton.Content.ToString() == "5" || cellButton.Content.ToString() == "6" || cellButton.Content.ToString() == "7"
                     || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                         cellButtonCoverage.Visibility = Visibility.Hidden;
-
-                    }
+                        victoryCountDown--;
+                        GameWinScreen(victoryCountDown);
+                }
             }
 
                 //Check the cell up
@@ -449,16 +462,20 @@ namespace MineSweeperWPF
                     Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "CL" + (col));
                     if((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
-                            cellButtonCoverage.Visibility = Visibility.Hidden;
-                            RevealAdjacentCell(row-1, col);
+                        cellButtonCoverage.Visibility = Visibility.Hidden;
+                        victoryCountDown--;
+                        GameWinScreen(victoryCountDown);
+                        RevealAdjacentCell(row-1, col);
                     }
                 if ((cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
                     || cellButton.Content.ToString() == "5" || cellButton.Content.ToString() == "6" || cellButton.Content.ToString() == "7"
                     || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                            cellButtonCoverage.Visibility = Visibility.Hidden;
+                           victoryCountDown--;
+                    GameWinScreen(victoryCountDown);
 
-                    }
+                }
             }
 
                 //Check the cell down
@@ -466,19 +483,24 @@ namespace MineSweeperWPF
                 {
                     Button cellButtonCoverage = (System.Windows.Controls.Button)cellGrid.FindName("cellButtonCoverage" +"R"+ (row + 1) + "CL" + (col));
                     Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row + 1) + "CL" + (col));
-               
-                    if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
+                   
+
+                if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;
-                                RevealAdjacentCell(row + 1, col);
+                                victoryCountDown--;
+                                GameWinScreen(victoryCountDown);
+                    RevealAdjacentCell(row + 1, col);
                     }
                 if ((cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
                     || cellButton.Content.ToString() == "5" || cellButton.Content.ToString() == "6" || cellButton.Content.ToString() == "7"
                     || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                         cellButtonCoverage.Visibility = Visibility.Hidden;
+                        victoryCountDown--;
+                        GameWinScreen(victoryCountDown);
 
-                    }
+                }
             }
 
                 //Check the adjacent cell up
@@ -488,16 +510,20 @@ namespace MineSweeperWPF
                     Button cellButton = (System.Windows.Controls.Button)cellGrid.FindName("cellButton" +"R"+ (row - 1) + "CL" + (col + 1));
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
-                                cellButtonCoverage.Visibility = Visibility.Hidden;
-                                RevealAdjacentCell(row - 1, col + 1);
+                            cellButtonCoverage.Visibility = Visibility.Hidden;
+                            victoryCountDown--;
+                            GameWinScreen(victoryCountDown);
+                            RevealAdjacentCell(row - 1, col + 1);
                     }
                     if ((cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
                         || cellButton.Content.ToString() == "5" || cellButton.Content.ToString() == "6" || cellButton.Content.ToString() == "7"
                         || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                         cellButtonCoverage.Visibility = Visibility.Hidden;
+                        victoryCountDown--;
+                        GameWinScreen(victoryCountDown);
 
-                    }
+                }
             }
 
                 //Check the adjacent cell down
@@ -508,6 +534,7 @@ namespace MineSweeperWPF
                     if ((cellButton.Content.ToString() == "") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                                 cellButtonCoverage.Visibility = Visibility.Hidden;
+                                victoryCountDown--;
                                 RevealAdjacentCell(row + 1, col - 1);
                      }
                     if ((cellButton.Content.ToString() == "1" || cellButton.Content.ToString() == "2" || cellButton.Content.ToString() == "3" || cellButton.Content.ToString() == "4"
@@ -515,8 +542,10 @@ namespace MineSweeperWPF
                         || cellButton.Content.ToString() == "8") && cellButtonCoverage.Visibility == Visibility.Visible)
                     {
                         cellButtonCoverage.Visibility = Visibility.Hidden;
+                        victoryCountDown--;
+                        GameWinScreen(victoryCountDown);
 
-                    }
+                }
                 }
 
 
@@ -558,6 +587,20 @@ namespace MineSweeperWPF
             TimeScore.Visibility = Visibility.Visible;
             RevealAll(board.GetUpperBound(0), board.GetUpperBound(1));
             StopButton.Content = "Back";
+        }
+
+        void GameWinScreen(int cellToReveal)
+        {
+            Console.WriteLine("victoryCountDown: " + cellToReveal);
+            if(cellToReveal == 0)
+            {
+                TimeScore.Content = GameTimer.Content;
+                GameTimer.Visibility = Visibility.Hidden;
+                NumberOfMines.Visibility = Visibility.Hidden;
+                GameTimerImg.Visibility = Visibility.Hidden;
+                NumberOfMinesImg.Visibility = Visibility.Hidden;
+            }
+            
         }
     }
 }

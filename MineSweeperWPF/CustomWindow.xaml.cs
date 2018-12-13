@@ -28,9 +28,16 @@ namespace MineSweeperWPF
         {
             
             int gameLevelValue = 4;
-            GameWindow gameWindow = new GameWindow(gameLevelValue, Int16.Parse( NumberOfColumnsTextBox.Text), Int16.Parse( NumberOfRowsTextBox.Text), Int16.Parse( NumberOfMinesTextBox.Text));
-            this.Close();
-            gameWindow.ShowDialog();
+            int number = 0;
+            if (int.TryParse(NumberOfColumnsTextBox.Text, out number)&& int.TryParse(NumberOfRowsTextBox.Text, out number) && int.TryParse(NumberOfMinesTextBox.Text, out number)) {
+                GameWindow gameWindow = new GameWindow(gameLevelValue, Int16.Parse(NumberOfColumnsTextBox.Text), Int16.Parse(NumberOfRowsTextBox.Text), Int16.Parse(NumberOfMinesTextBox.Text));
+                this.Close();
+                gameWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You have to enter valid numbers for rows, columns, and number of mines!");
+            }
         }
     }
 }

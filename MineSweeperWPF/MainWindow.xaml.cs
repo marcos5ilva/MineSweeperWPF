@@ -87,6 +87,9 @@ namespace MineSweeperWPF
         {
             soundPlayer.Stop();
             CustomWindow customWindow = new CustomWindow();
+            //Easy.IsEnabled = false;
+            //Normal.IsEnabled = false;
+            //Hard.IsEnabled = false;
             this.Close();
             customWindow.ShowDialog();
            
