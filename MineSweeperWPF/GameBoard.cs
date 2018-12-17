@@ -44,29 +44,8 @@ namespace MineSweeperWPF
                 {
                     if (Board[row, col] == 100)
                     {
-
-                        /*//Add adjacent bomb count on the right cell
-                        if (row >= 0 && row <= board.GetUpperBound(0) && col + 1 >= 0 && col + 1 <= board.GetUpperBound(1) && board[row, col + 1] != 100) { board[row, col + 1]++; }
-
-                        //Add adjacent bomb count on the lef cell
-                        if (row >= 0 && row <= board.GetUpperBound(0) && col - 1 >= 0 && col - 1 <= board.GetUpperBound(1) && board[row, col - 1] != 100) { board[row, col - 1]++; }
-
-                        //Add adjacent bomb count in the upper cell
-                        if (row - 1 >= 0 && board[row - 1, col] != 100) { board[row - 1, col]++; }
-
-                        // Add adjacent bomb count in the right cell bellow
-                        if (row + 1 >= 0 && row + 1 <= board.GetUpperBound(1) && col + 1 >= 0 && col + 1 <= board.GetUpperBound(0) && board[row + 1, col + 1] != 100) { board[row + 1, col + 1]++; }
-
-                        // Add adjacent bomb count in the right cell upper
-                        if (row - 1 >= 0 && row - 1 <= board.GetUpperBound(1) && col + 1 >= 0 && col + 1 <= board.GetUpperBound(0) && board[row - 1, col + 1] != 100) { board[row - 1, col + 1]++; }
-
-                        // Add adjacent bomb count in the left cell bellow
-                        if (row + 1 >= 0 && row + 1 <= board.GetUpperBound(1) && col + 1 >= 0 && col + 1 <= board.GetUpperBound(0) && board[row + 1, col + 1] != 100) { board[row + 1, col + 1]++; }
-
-                        // Add adjacent bomb count in the left cell upper
-                        if (row - 1 >= 0 && row - 1 <= board.GetUpperBound(1) && col - 1 >= 0 && col - 1 <= board.GetUpperBound(0) && board[row - 1, col - 1] != 100) { board[row - 1, col - 1]++; }*/
-
-                        //Add adjacent bomb count on the right cell
+                        /*
+                         * //Add adjacent bomb count on the right cell
                         try
                         {
                             if (Board[row, col + 1] != 100) { Board[row, col + 1]++; }
@@ -141,9 +120,56 @@ namespace MineSweeperWPF
                         catch (IndexOutOfRangeException e)
                         {
 
+                        }*/
+
+                        //Add adjacent bomb count on the right cell
+                        if (col + 1 <= Board.GetUpperBound(1))
+                        {
+                            if (Board[row, col + 1] != 100) { Board[row, col + 1]++; }
                         }
 
+                        //Add adjacent bomb count on the left cell
+                        if (col - 1 > 0)
+                        {
+                            if (Board[row, col - 1] != 100) { Board[row, col - 1]++; }
+                        }
 
+                        //Add adjacent bomb count in the upper cell
+                        if (row - 1 >= 0)
+                        {
+                            if (Board[row - 1, col] != 100) { Board[row - 1, col]++; }
+                        }
+
+                        //Add adjacent bomb count in the cell bellow
+                        if (row + 1 <= Board.GetUpperBound(0))
+                        {   
+                            if (Board[row + 1, col] != 100) { Board[row + 1, col]++; }
+                        }
+
+                        // Add adjacent bomb count in the left cell upper
+                        if (row - 1 >= 0 && col -1 >=0)
+                        {
+                            if (Board[row - 1, col - 1] != 100) { Board[row - 1, col - 1]++; }
+                        }
+
+                        // Add adjacent bomb count in the left cell down
+                        if (row + 1 <= Board.GetUpperBound(0) && col - 1 >= 0)
+                        {
+                            if (Board[row + 1, col - 1] != 100) { Board[row + 1, col - 1]++; }
+                        }
+
+                        // Add adjacent bomb count in the right cell down
+                        if (row + 1 <= Board.GetUpperBound(0) && col + 1 <= Board.GetUpperBound(1)) 
+                        {
+                            if (Board[row + 1, col + 1] != 100) { Board[row + 1, col + 1]++; }
+                        }
+                        
+                        if(row - 1 >=0 && col + 1 <= Board.GetUpperBound(1))
+                        {
+                            // Add adjacent bomb count in the right cell upper
+                            if (Board[row - 1, col + 1] != 100) { Board[row - 1, col + 1]++; }
+                        }
+                        
 
                     }
 

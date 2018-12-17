@@ -38,6 +38,6 @@ namespace MineSweeperWPF
             {
                 MessageBox.Show("You have to enter valid numbers for rows, columns, and number of mines!");
             }
-        }
+        } 
     }
 }

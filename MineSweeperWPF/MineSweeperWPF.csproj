@@ -146,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bombSound.mp3" />
+    <Content Include="SadnessPianoTheme.mp3" />
+    <Content Include="VictoryTheme.mp3" />
+    <Resource Include="WinMsgLogo.png" />
     <Resource Include="iconFlag.png" />
     <Resource Include="gameOverBackground.png" />
     <Resource Include="gameOverLogo.png" />

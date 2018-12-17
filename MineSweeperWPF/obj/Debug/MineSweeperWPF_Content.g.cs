@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bombsound.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sadnesspianotheme.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("victorytheme.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("in_light_of_darkness.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modern_warriors.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modern_warriors.wav")]

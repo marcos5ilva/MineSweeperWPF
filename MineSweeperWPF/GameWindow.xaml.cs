@@ -37,6 +37,9 @@ namespace MineSweeperWPF
         //SoundPlayer soundPlayer = new SoundPlayer();
         //SoundPlayer sfxOcean = new SoundPlayer();
 
+        IWavePlayer finalTheme = new WaveOut();
+        AudioFileReader finalTemeFileReader;
+
         public GameWindow(int gameLevelValue, int costumNumColumn, int costumNumRow, int costumNumMines)
         {
             InitializeComponent();
@@ -90,6 +93,11 @@ namespace MineSweeperWPF
             NumberOfMinesImg.Visibility = Visibility.Visible;
             TimerLabel.Visibility = Visibility.Hidden;
             TimeScore.Visibility = Visibility.Hidden;
+
+            //Win Msg Info
+            WinMsgLogo.Visibility = Visibility.Hidden;
+
+
             if (gameLevelValue == 1)
             {
                 threeBVLevel = 25;
@@ -567,10 +575,12 @@ namespace MineSweeperWPF
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-           
+            finalTheme.Stop();
+            finalTheme.Dispose();
             this.Close();
             timerIncrement = 0;
             mainWindow.ShowDialog();
+            
             
         }
 
@@ -587,6 +597,13 @@ namespace MineSweeperWPF
             TimeScore.Visibility = Visibility.Visible;
             RevealAll(board.GetUpperBound(0), board.GetUpperBound(1));
             StopButton.Content = "Back";
+
+            //Final Screen Song
+            finalTheme = new WaveOut();
+            finalTemeFileReader = new AudioFileReader(@"C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\SadnessPianoTheme.mp3");
+            finalTheme.Init(finalTemeFileReader);
+            finalTheme.Play();
+
         }
 
         void GameWinScreen(int cellToReveal)
@@ -599,6 +616,16 @@ namespace MineSweeperWPF
                 NumberOfMines.Visibility = Visibility.Hidden;
                 GameTimerImg.Visibility = Visibility.Hidden;
                 NumberOfMinesImg.Visibility = Visibility.Hidden;
+                TimerLabel.Visibility = Visibility.Visible;
+                TimeScore.Visibility = Visibility.Visible;
+                WinMsgLogo.Visibility = Visibility.Visible;
+                StopButton.Content = "Back";
+
+                //Final Screen Song
+                finalTheme = new WaveOut();
+                finalTemeFileReader = new AudioFileReader(@"C:\Users\Marcos\source\repos\MineSweeperWPF\MineSweeperWPF\VictoryTheme.mp3");
+                finalTheme.Init(finalTemeFileReader);
+                finalTheme.Play();
             }
             
         }
