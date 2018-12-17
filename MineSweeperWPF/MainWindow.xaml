@@ -21,5 +21,6 @@
         <Button x:Name="Easy" Content="Easy" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Easy_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,167"/>
         <Button x:Name="Hard" Content="Hard" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Hard_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,51"/>
         <Button x:Name="Custom" Content="custom" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="196" Height="41" Click="Custom_Click" Grid.Row="2" Background="#FF000131" Foreground="#FF007399" FontFamily="Stencil" FontSize="20" Margin="78,0,78,400" Grid.RowSpan="3"/>
+        <Button x:Name="SoundBtn" Content="" HorizontalAlignment="Left" Height="39"  Margin="291,382,0,0" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="41" BorderBrush="{x:Null}" Background="{x:Null}"/>
     </Grid>
 </Window>

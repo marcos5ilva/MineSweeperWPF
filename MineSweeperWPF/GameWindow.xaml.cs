@@ -235,7 +235,7 @@ namespace MineSweeperWPF
                     RegisterName(cellButton.Name, cellButton);
                     cellButton.Visibility = Visibility.Visible;
 
-                    cellButtonCoverage.Background = new SolidColorBrush(Color.FromArgb(250, 1, 51, 2));
+                    cellButtonCoverage.Background = new SolidColorBrush(Color.FromArgb(255, 1, 51, 2));
                     cellButtonCoverage.BorderBrush = new SolidColorBrush(Color.FromArgb(180, 16, 244, 16));
                     
 

@@ -95,7 +95,7 @@ namespace MineSweeperTests
             };
            
             ThreeBV myThreeBV = new ThreeBV(board);
-            int expected = 7;
+            int expected = 8;
             int response = 0;
             //Act
             response = myThreeBV.Value();
